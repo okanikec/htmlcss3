@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?
+        family=Quicksand:100,300,500"> -->
+        <link rel="stylesheet" href="../css/login_styles.css">
+        <link rel="stylesheet" href="../css/navbar_styles.css">
+        <title> Login Form</title>
+    </head>
+    <body>
+
+        <nav class="navbar">
+            <div class="brand-title"> S & I Logistics </div>
+            <a href="#" class="toggle-button">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </a>
+            <div class="navbar-links">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/chat">Chat</a></li>
+                    <li><a href="/about">About</a></li>
+                </ul>
+            </div>    
+        </nav>
+
+        <div class="full-screen-container">
+
+            <div class="login-container">
+                <h3 class="login-title"> Sign Up </h3>
+                <form action="/teamates" method="POST">
+                    <div class="input-group">
+                        <label> Email </label>
+                        <input type="email" name="email" id="email" required>
+                    </div>
+                    <p></p>
+                    <div class="input-group">
+                        <label> country / location :</label>
+                        <select id="kuntry" style="margin-right:0px; width:350px;" name="country">
+                            <option value="--Select a Country--"> --Select a Country-- </option>
+                        </select>   
+                    </div>
+                    <p></p>
+                    <div class="input-group">
+                        <label> Password </label>
+                        <input type="password" name="password" required>
+                    </div>
+                    <p></p>
+                    <div class="input-group">
+                        <label>Confirm Password </label>
+                        <input type="password" name="confirmpass" required>
+                    </div>
+                    <p></p>
+                    <button type="submit" class="login-button"> sign up </button>
+                </form>
+
+            </div>
+
+        </div>
+        <script src="../js/nav_toggle.js"></script> 
+        <script src="../js/countryselect.js"></script>
+        <script src="../socket.io/socket.io.js"></script>   
+    </body>
+
+</html>
