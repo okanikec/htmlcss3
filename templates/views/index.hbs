@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  {{>header}}
+  <body>
+    
+   
+    {{>nav}} 
+  
+    <p><table id='tab' class="content-table"></table></p>
+        
+
+ 
+    
+   
+    <div class="full-screen-container"> 
+      <form method="POST" action="/teamates/login">
+        <h3 class="login-title"> Login </h3>
+        <div class="input-group">
+            <label> email </label>
+            <input type="email">
+        </div>
+        <p> Welcome to my site </p>
+        <div class="input-group">
+            <label> password </label>
+            <input type="password">
+        </div>
+        <button type="submit" class="login-button"> Sign In </button>
+        <a href="/forgot">Forgot Password?</a>
+      <br>
+      <br>
+      <p> New Member?  <a href="/signup">Sign Up</a>
+      <br>
+      </form>
+      <footer> Created by Ikechukwu Okanu </footer> 
+    </div>  
+    <br>
+
+    <script src="../js/nav_toggle.js"></script>
+    
+  </body>
+</html>

@@ -1,35 +1,8 @@
 <!DOCTYPE html>
 <html>
-    <head> 
-        <title> Contact us  </title>  
-            
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link href="../css/navbar_styles.css" rel="stylesheet">
-        <link href="../css/login_styles.css" rel="stylesheet">
-        <link href="../css/chat_styles.css" rel="stylesheet">
-        
-         
-       
-    </head>
+    {{>header}}
     <body> 
-        
-
-        <nav class="navbar">
-            <div class="brand-title"> S & I Logistics </div>
-            <a href="#" class="toggle-button">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </a>
-            <div class="navbar-links">
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/chat"> Chat </a></li>
-                    <li><a href="/about"> About </a></li>
-                </ul>
-            </div>    
-        </nav>
+        {{>nav}}
 
         <div class="chat">
             <div class="chat__sidebar"> </div>

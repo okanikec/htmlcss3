@@ -29,7 +29,13 @@ const teamateSchema = new mongoose.Schema({
     confirmpass: {
         type: String,
         //required: true,
-        trim: true
+        trim: true,
+        validate: {
+            validator: function (el) {
+                return el === this.password
+            },
+            message: "Passwords are not the same",
+        }
     },
     tokens:[{
         token: {
@@ -44,7 +50,7 @@ teamateSchema.methods.toJSON = function () {
     const teamateObject = teamate.toObject()
 
     delete teamateObject.password
-    //delete teamateObject.confirmpass
+    delete teamateObject.confirmpass
     delete teamateObject.tokens
 
     return teamateObject
@@ -70,8 +76,13 @@ teamateSchema.statics.findByCredentials = async (email, password) => {
     }
 
     const isMatch = await bcrypt.compare(password, teamate.password)
+    const isMatch2 = await bcrypt.compare(confirmpass, teamate.confirmpass)
 
     if (!isMatch) {
+        throw new Error('unable to login')
+    }
+
+    if (!isMatch2) {
         throw new Error('unable to login')
     }
 
@@ -79,17 +90,23 @@ teamateSchema.statics.findByCredentials = async (email, password) => {
 }
 
 
+
+
 //hash plain text password before saving
 teamateSchema.pre('save', async function (next) {
     const teamate = this
-
-    if (teamate.isModified('password')){
+   
+    if (teamate.isModified('password'))
+    {
         teamate.password = await bcrypt.hash(teamate.password, 8)
+        teamate.confirmpass = await bcrypt.hash(teamate.confirmpass, 8)
+    
+        
     }
 
     next()
-
 })
+
 
 const Teamate = mongoose.model('Teamate', teamateSchema )
 
