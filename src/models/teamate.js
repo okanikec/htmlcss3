@@ -76,15 +76,13 @@ teamateSchema.statics.findByCredentials = async (email, password) => {
     }
 
     const isMatch = await bcrypt.compare(password, teamate.password)
-    const isMatch2 = await bcrypt.compare(confirmpass, teamate.confirmpass)
+
 
     if (!isMatch) {
         throw new Error('unable to login')
     }
 
-    if (!isMatch2) {
-        throw new Error('unable to login')
-    }
+   
 
     return teamate
 }
