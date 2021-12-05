@@ -18,9 +18,8 @@ router.post('/teamates', async (req, res) => {
     }
 })
 
-// Front-End create new teamate
+// HTML create new teamate
 // router.post('/teamates', async (req, res) => {
-//     console.log(req.body)
 //     const teamate = new Teamate(req.body)
 //     try {
 //         await teamate.save()
@@ -37,7 +36,7 @@ router.post('/teamates/login', async (req, res) => {
     try {
         const teamate = await Teamate.findByCredentials(req.body.email, req.body.password)
         const token = await teamate.generateAuthToken()
-        res.send({ teamate, token})
+        res.send({teamate, token})
     } catch (e) {
         res.status(400).send(e)
     }
@@ -48,12 +47,9 @@ router.post('/teamates/login', async (req, res) => {
 // router.post('/teamates/login', async (req, res) => {
 //     try {
 //         const teamate = await Teamate.findByCredentials(req.body.email, req.body.password)
-//         //console.log(teamate)
 //         const token = await teamate.generateAuthToken()
-//         //console.log(token)
 //         res.cookie('auth_token', token)
-//         res.send({ teamate, token})
-//         //res.redirect('/home')
+//         res.redirect('/home')
 //     } catch (e) {
 //         res.status(400).send()
 //     }

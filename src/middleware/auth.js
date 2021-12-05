@@ -5,7 +5,7 @@ const auth = async (req, res, next) => {
     try {
         //const token = req.cookies['auth_token']
         const token = req.header('Authorization').replace('Bearer ', '')
-        const decoded = jwt.verify(token,'thisismynewcourse')
+        const decoded = jwt.verify(token, process.env.JWT_ENV)
         const teamate = await Teamate.findOne({ _id: decoded._id, 'tokens.token': token })
 
         if(!teamate) {

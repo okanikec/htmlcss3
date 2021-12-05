@@ -30,12 +30,12 @@ const teamateSchema = new mongoose.Schema({
         type: String,
         //required: true,
         trim: true,
-        validate: {
-            validator: function (el) {
-                return el === this.password
-            },
-            message: "Passwords are not the same",
-        }
+        // validate: {
+        //     validator: function (el) {
+        //         return el === this.password
+        //     },
+        //     message: "Passwords are not the same",
+        // }
     },
     tokens:[{
         token: {
@@ -59,7 +59,7 @@ teamateSchema.methods.toJSON = function () {
 //generate Authentication Token
 teamateSchema.methods.generateAuthToken = async function () {
     const teamate = this
-    const token = jwt.sign({_id: teamate._id.toString()}, 'thisismynewcourse')
+    const token = jwt.sign({_id: teamate._id.toString()}, process.env.JWT_SECRET)
 
     teamate.tokens = teamate.tokens.concat({token})
     await teamate.save()
