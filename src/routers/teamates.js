@@ -32,29 +32,30 @@ const loggedInTeamate = []
 // })
 
 //postman login 
-// router.post('/teamates/login', async (req, res) => {
-//     try {
-//         const teamate = await Teamate.findByCredentials(req.body.email, req.body.password)
-//         const token = await teamate.generateAuthToken()
-//         res.send({teamate, token})
-//     } catch (e) {
-//         res.status(400).send(e)
-//     }
-// })
-
-
-// Web app login 
 router.post('/teamates/login', async (req, res) => {
     try {
         const teamate = await Teamate.findByCredentials(req.body.email, req.body.password)
         const token = await teamate.generateAuthToken()
-        res.cookie('auth_token', token)
-        res.redirect('/home')
-        //res.sendFile(path.resolve(__dirname, '...','templates', 'views', 'home.hbs'))
+        res.send({teamate, token})
     } catch (e) {
-        res.status(400).send()
+        console.log(e)
+        res.status(400).send(e)
     }
 })
+
+
+// Web app login 
+// router.post('/teamates/login', async (req, res) => {
+//     try {
+//         const teamate = await Teamate.findByCredentials(req.body.email, req.body.password)
+//         const token = await teamate.generateAuthToken()
+//         res.cookie('auth_token', token)
+//         res.redirect('/home')
+//         //res.sendFile(path.resolve(__dirname, '...','templates', 'views', 'home.hbs'))
+//     } catch (e) {
+//         res.status(400).send()
+//     }
+// })
 
 
 

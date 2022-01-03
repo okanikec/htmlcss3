@@ -3,9 +3,9 @@ const Teamate = require('../models/teamate')
 
 const auth = async (req, res, next) => {
     try {
-        const token = req.cookies['auth_token']
-        //const token = req.header('Authorization').replace('Bearer ', '')
-        const decoded = jwt.verify(token, process.env.JWT_ENV)
+        //const token = req.cookies['auth_token']
+        const token = req.header('Authorization').replace('Bearer ', '')
+        const decoded = jwt.verify(token, process.env.JWT_SECRET)
         const teamate = await Teamate.findOne({ _id: decoded._id, 'tokens.token': token })
 
         if(!teamate) {
